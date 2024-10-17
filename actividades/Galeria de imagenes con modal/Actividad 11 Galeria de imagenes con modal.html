@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Imágenes con Modal y Estilo</title>
+    <style>
+        /* Estilos básicos de la galería */
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Ocultar el scroll para que el efecto se vea mejor */
+        }
+
+        h1 {
+            margin-top: 20px;
+            font-size: 32px;
+            color: #ffffff;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .gallery-img {
+            margin: 15px;
+            width: 200px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 4px solid #fff;
+            border-radius: 10px;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Estilos para el modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            border: 5px solid #fff;
+            border-radius: 10px;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+        }
+
+        #caption {
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            padding: 10px;
+        }
+
+        /* Partículas */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.8);
+            pointer-events: none;
+        }
+
+        /* Animación de partículas */
+        @keyframes particle-animation {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Galería de Imágenes</h1>
+
+    <div class="gallery">
+        <img src="imagen1.jpeg" alt="Imagen 1" class="gallery-img">
+        <img src="imagen2.jpeg" alt="Imagen 2" class="gallery-img">
+        <img src="imagen3.jpeg" alt="Imagen 3" class="gallery-img">
+        <img src="imagen4.jpeg" alt="Imagen 4" class="gallery-img">
+    </div>
+
+    <!-- Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption"></div>
+    </div>
+
+    <script>
+        // Obtener los elementos necesarios
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const captionText = document.getElementById("caption");
+        const closeBtn = document.getElementsByClassName("close")[0];
+
+        // Obtener todas las imágenes de la galería
+        const galleryImages = document.querySelectorAll(".gallery-img");
+
+        // Añadir el evento de clic a cada imagen
+        galleryImages.forEach(img => {
+            img.addEventListener("click", function () {
+                modal.style.display = "block"; // Mostrar el modal
+                modalImg.src = this.src; // Asignar la imagen seleccionada al modal
+                captionText.textContent = this.alt; // Añadir el texto de la imagen al caption
+            });
+        });
+
+        // Cerrar el modal cuando se hace clic en la "X"
+        closeBtn.onclick = function () {
+            modal.style.display = "none";
+        };
+
+        // También cerrar el modal si se hace clic fuera de la imagen
+        modal.onclick = function (event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+
+        // Cerrar el modal al presionar la tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                modal.style.display = "none";
+            }
+        });
+
+        // Crear partículas
+        function createParticles() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const size = Math.random() * 10 + 5; // Tamaño de las partículas
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * window.innerWidth}px`;
+            particle.style.animationDuration = `${Math.random() * 2 + 1}s`; // Duración aleatoria
+            particle.style.animationName = 'particle-animation';
+            document.body.appendChild(particle);
+
+            // Eliminar la partícula después de que termina la animación
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+            });
+        }
+
+        // Generar partículas en intervalos cortos
+        setInterval(createParticles, 100); // Cambiar el intervalo para un efecto más rápido
+    </script>
+
+</body>
+</html>

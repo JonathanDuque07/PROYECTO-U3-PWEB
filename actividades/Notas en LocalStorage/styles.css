@@ -1,0 +1,153 @@
+/* Fondo con degradado dinámico */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 25%, #a18cd1 50%, #fbc2eb 75%, #667eea 100%);
+    background-size: 300% 300%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    animation: gradient-animation 10s ease infinite;
+}
+
+/* Animación de fondo */
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Contenedor de la aplicación */
+.app-container {
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    transform: scale(0.9);
+    animation: fade-in 1s ease forwards;
+    overflow: hidden; /* Evitar el desbordamiento */
+}
+
+/* Animación de entrada */
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Título principal */
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Input y botón en columna */
+.note-input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+/* Input para escribir notas */
+#note-input {
+    padding: 10px;
+    border: 2px solid #fda085;
+    border-radius: 12px;
+    font-size: 16px;
+    height: 100px;
+    margin-bottom: 15px;
+    transition: border 0.3s ease;
+    resize: none; /* Desactivar redimensionamiento */
+    overflow-y: auto; /* Permitir desplazamiento si el contenido es demasiado grande */
+}
+
+/* Hover y foco en input */
+#note-input:focus {
+    outline: none;
+    border: 2px solid #f6d365;
+}
+
+/* Botón de agregar nota */
+#add-note-btn {
+    background-color: #fda085;
+    border: none;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover en botón de agregar */
+#add-note-btn:hover {
+    background-color: #f6d365;
+    transform: translateY(-2px);
+}
+
+/* Lista de notas */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Cada nota con efecto hover */
+ul li {
+    background-color: #f6f6f6;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover en cada nota */
+ul li:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+}
+
+/* Texto de cada nota */
+ul li p {
+    margin: 0;
+    color: #333;
+    font-size: 16px;
+}
+
+/* Botón de eliminar */
+ul li button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover en botón de eliminar */
+ul li button:hover {
+    background-color: #ee5253;
+    transform: scale(1.05);
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Portafolio de Evidencias Unidad III</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/destello.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+
+<body>
+    <!-- Contenedor para las partículas -->
+    <div id="particles-js" class="background"></div>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="logo">Portafolio de Actividades Unidad III</div>
+        <ul class="nav-links">
+            <li><a href="#inicio"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="servicios.html"><i class="fas fa-cogs"></i> Servicios</a></li>
+            <li><a href="sobremi.html"><i class="fas fa-user"></i> Sobre mí</a></li>
+            <li><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Sección de Galería -->
+    <section class="gallery">
+        <!-- Los proyectos se generan dinámicamente -->
+    </section>
+
+    <!-- Modal para mostrar el contenido dinámicamente -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h1 id="modal-title"></h1>
+            <iframe id="modal-iframe" width="100%" height="380px" frameborder="0" scrolling="yes"></iframe>
+        </div>
+    </div>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="js/main.js"></script>
+    <script>
+        // Cargar las partículas
+        particlesJS.load('particles-js', 'particles.json', function() {
+            console.log('callback - particles.js config loaded');
+        });
+
+        // Lista de proyectos y rutas de imágenes definidas originalmente
+        const proyectos = [
+            { id: 1, title: 'Actividad 1: "Mostrar un Mensaje en la Página"', src: 'actividades/Mostrar mensaje en la Página/Actividad 1 Mostrar mensaje en la Página.html', img: 'images/ac1.jpg' },
+            { id: 2, title: 'Actividad 2: "Cambiar el Color de Fondo"', src: 'actividades/Cambiar color fondo/Actividad 2 Cambiar color fondo.html', img: 'images/actv2 color_fondo.jpg' },
+            { id: 3, title: 'Actividad 3: "Validación de Formularios Simple"', src: 'actividades/Formulario Simple/Actvidad 3 Formulario Simple.html', img: 'images/actv3 formulario simple.jpg' },
+            { id: 4, title: 'Actividad 4: "Suma de dos Números"', src: 'actividades/Suma de dos numeros/Actv 4 Suma de dos numeros.html', img: 'images/actv4 suma de 2 num.jpeg' },
+            { id: 5, title: 'Actividad 5: "Contador"', src: 'actividades/Contador/Actividad 5 Contador.html', img: 'images/actv 5 contador.jpeg' },
+            { id: 6, title: 'Actividad 6: "Cambio de Imagen"', src: 'actividades/Cambio de imagen/Actv 6 Cambio de imagen.html', img: 'images/actv 6 cambio de imagen.png' },
+            { id: 7, title: 'Actividad 7: "Temporizador"', src: 'actividades/temporizador/Actv 7 temporizador.html', img: 'images/Actv 7 temporizador.png' },
+            { id: 8, title: 'Actividad 8: "To-Do List; Lista de Tareas"', src: 'actividades/Lista de Tareas/Actividad 8 Lista de Tareas.html', img: 'images/actv 8 lista de tareas.png' },
+            { id: 9, title: 'Actividad 9: "Piedra, Papel o Tijera"', src: 'actividades/Piedra papel tijera/Actv 9 piedra papel tijera.html', img: 'images/actv 9 piedra papel tijera.jpeg' },
+            { id: 10, title: 'Actividad 10: "Filtro de Búsqueda en Tabla"', src: 'actividades/Filtro de busqueda en tabla/Actividad 10 filtro de busqueda en tabla.html', img: 'images/actv 10 filtro de busqueda en tabla.png' },
+            { id: 11, title: 'Actividad 11: "Galería de Imágenes"', src: 'actividades/Galeria de imagenes con modal/Actividad 11 Galeria de imagenes con modal.html', img: 'images/actv 11 galeria de imagenes.jpeg' },
+            { id: 12, title: 'Actividad 12: "Calculadora Básica"', src: 'actividades/Calculadora basica/Actividad 12 Calculadora basica.html', img: 'images/actv 12 calculadora basica.jpeg' },
+            { id: 13, title: 'Actividad 13: "Conversor de Unidades"', src: 'actividades/Convertidor de Unidades/Actividad 13 Convertidor de Unidades.html', img: 'images/actv 13 conversor de unidades.jpeg' },
+            { id: 14, title: 'Actividad 14: "Convertidor de Palabras"', src: 'actividades/Convertidor de palabras/Actividad 14 Convertidor de palabras.html', img: 'images/actv 14 contador de palabras.jpeg' },
+            { id: 15, title: 'Actividad 15: "Cronómetro"', src: 'actividades/Cronometro/Actvidad 15 Cronometro.html', img: 'images/actv 15 cronometro.jpeg' },
+            { id: 16, title: 'Actividad 16: "Galería de Imágenes usando API de Unsplash"', src: 'actividades/API Unsplash/Actividad 16 Galeria de imagenes usando API de Unsplash.html', img: 'images/actv 16 Galeria de imagenes usando API de Unsplash.png' },
+            { id: 17, title: 'Actividad 17: "Notas en LocalStorage"', src: 'actividades/Notas en LocalStorage/Actividad 17 Notas LocalStorage.html', img: 'images/actv 17 notas en localstorage.jpeg' },
+        ];
+
+        // Generar dinámicamente los proyectos en la galería
+        const gallerySection = document.querySelector('.gallery');
+        proyectos.forEach(proyecto => {
+            const projectDiv = document.createElement('div');
+            projectDiv.classList.add('project');
+            projectDiv.onclick = () => openModal(proyecto.title, proyecto.src);
+            projectDiv.innerHTML = `
+                <img src="${proyecto.img}" alt="Proyecto ${proyecto.id}">
+                <div class="overlay">Proyecto ${proyecto.id}</div>
+            `;
+            gallerySection.appendChild(projectDiv);
+        });
+
+        // Funciones del modal
+        function openModal(title, src) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-iframe').src = src;
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+            document.getElementById('modal-iframe').src = ''; // Para detener la ejecución
+        }
+    </script>
+
+<footer style="background-color: rgba(20, 20, 20, 0.9); padding: 20px; text-align: center; color: white;">
+    <p>&copy; 2024 Jonathan Duque. Todos los derechos reservados.</p>
+    <p>Síguenos en nuestras redes sociales:</p>
+    <a href="https://www.facebook.com" style="color: #ffcc00; margin: 0 10px;">Facebook</a>
+    <a href="https://x.com/?lang=en" style="color: #ffcc00; margin: 0 10px;">X</a>
+    <a href="https://www.instagram.com" style="color: #ffcc00; margin: 0 10px;">Instagram</a>
+</footer>
+</body>
+
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporizador</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #ff6b6b, #f8d84d); /* Fondo degradado vibrante */
+            color: #333;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #ff3e3e; /* Color vibrante para el título */
+        }
+
+        .timer {
+            font-size: 4em; /* Tamaño grande para el temporizador */
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9); /* Fondo blanco con un poco de transparencia */
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+            color: #ff3e3e; /* Color vibrante para el temporizador */
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 1.5em; /* Tamaño de letra más grande */
+            cursor: pointer;
+            background-color: #ff3e3e; /* Color vibrante */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave */
+        }
+
+        button:hover {
+            background-color: #d92c2c; /* Color más oscuro al hacer hover */
+            transform: translateY(-2px); /* Efecto de desplazamiento al hacer hover */
+        }
+
+        button:disabled {
+            background-color: #ccc; /* Color para el botón deshabilitado */
+            cursor: not-allowed; /* Cambia el cursor para indicar que está deshabilitado */
+        }
+    </style>
+</head>
+<body>
+    <h1>Temporizador</h1>
+    <div class="timer" id="timer">50</div>
+    <button id="startButton">Iniciar Temporizador</button>
+
+    <script>
+        let count = 50;  // Valor inicial del temporizador
+        let intervalId;
+
+        // Selecciona el div donde se mostrará el temporizador
+        const timerDisplay = document.getElementById('timer');
+        const startButton = document.getElementById('startButton');
+
+        // Función que inicia el temporizador
+        function startTimer() {
+            intervalId = setInterval(() => {
+                count--;  // Resta 1 al contador
+                timerDisplay.textContent = count;  // Actualiza el valor en pantalla
+
+                // Si el contador llega a 0, se detiene el temporizador
+                if (count === 0) {
+                    clearInterval(intervalId);
+                    startButton.disabled = false;  // Habilita el botón para reiniciar
+                    startButton.textContent = "Reiniciar Temporizador";
+                }
+            }, 1000);  // Intervalo de 1 segundo (1000 ms)
+        }
+
+        // Evento para iniciar el temporizador al hacer clic en el botón
+        startButton.addEventListener('click', () => {
+            if (intervalId) {
+                clearInterval(intervalId);  // Resetea cualquier intervalo anterior si el temporizador estaba corriendo
+            }
+            count = 50;  // Reinicia el contador
+            timerDisplay.textContent = count;  // Muestra el valor inicial
+            startButton.disabled = true;  // Deshabilita el botón mientras el temporizador corre
+            startTimer();  // Inicia el temporizador
+        });
+    </script>
+</body>
+</html>

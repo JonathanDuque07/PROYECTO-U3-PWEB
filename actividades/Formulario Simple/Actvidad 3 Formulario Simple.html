@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación de Formulario</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Estilo general del cuerpo */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #9face6);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Estilo para el contenedor del formulario */
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+            transform: scale(1);
+            transition: transform 0.3s ease;
+        }
+
+        .form-container:hover {
+            transform: scale(1.05);
+        }
+
+        /* Título del formulario */
+        h2 {
+            text-align: center;
+            color: #333;
+            font-weight: 600;
+            font-size: 24px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: #3498db;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Estilos para los campos de entrada */
+        input {
+            padding: 15px;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 20px;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #2ecc71;
+            box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+        }
+
+        /* Botón de envío */
+        button {
+            padding: 15px;
+            font-size: 16px;
+            width: 100%;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2ecc71;
+            transform: translateY(-2px);
+        }
+
+        /* Mensaje de error */
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            display: none;
+            margin-bottom: 15px;
+        }
+
+    </style>
+    <script>
+        // Función que valida el formulario
+        function validarFormulario(event) {
+            event.preventDefault(); // Evita que el formulario se envíe
+            const nombre = document.getElementById('nombre').value;
+            const mensajeError = document.getElementById('noname');
+
+            // Verifica si el campo de nombre está vacío
+            if (nombre.trim() === "") {
+                mensajeError.style.display = 'block'; // Muestra el mensaje de error
+            } else {
+                mensajeError.style.display = 'none'; // Oculta el mensaje de error
+                alert("Formulario enviado correctamente");
+                document.getElementById('nombre').value = ''; // Limpia el campo de entrada
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <form onsubmit="validarFormulario(event)">
+            <h2>Registro</h2>
+            <!-- Campo de nombre -->
+            <input type="text" id="nombre" placeholder="Introduce tu nombre">
+            <!-- Mensaje de error si el campo está vacío -->
+            <p id="noname" class="error">El campo de nombre no puede estar vacío.</p>
+            <!-- Botón para enviar el formulario -->
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>

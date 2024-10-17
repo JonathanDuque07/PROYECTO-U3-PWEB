@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronómetro Profesional</title>
+    <style>
+        /* Estilo general */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #4a90e2 0%, #9013fe 100%);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Contenedor del cronómetro */
+        .cronometro {
+            background: rgba(255, 255, 255, 0.9); /* Fondo blanco con transparencia */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 430px;
+        }
+
+        /* Título del cronómetro */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333; /* Color del título */
+        }
+
+        /* Estilo del cuadro del tiempo */
+        .cuadro-tiempo {
+            background-color: #ffffff; /* Fondo blanco para el cuadro del tiempo */
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo del tiempo */
+        .tiempo {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #333; /* Color del texto */
+            letter-spacing: 2px;
+        }
+
+        /* Contenedor de los botones */
+        .botones {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        /* Estilo general de los botones */
+        .boton {
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilos individuales de los botones */
+        .boton.iniciar {
+            background-color: #4caf50; /* Verde */
+        }
+
+        .boton.pausar {
+            background-color: #ff9800; /* Naranja */
+        }
+
+        .boton.reiniciar {
+            background-color: #f44336; /* Rojo */
+        }
+
+        /* Efecto hover en los botones */
+        .boton:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Efecto click en los botones */
+        .boton:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="cronometro">
+    <h1>Cronómetro</h1> <!-- Título -->
+    <div class="cuadro-tiempo"> <!-- Cuadro para el tiempo -->
+        <div id="tiempo" class="tiempo">00:00:00</div>
+    </div>
+
+    <div class="botones">
+        <button class="boton iniciar" onclick="iniciarCronometro()">Iniciar</button>
+        <button class="boton pausar" onclick="pausarCronometro()">Pausar</button>
+        <button class="boton reiniciar" onclick="reiniciarCronometro()">Reiniciar</button>
+    </div>
+</div>
+
+<script>
+    let horas = 0;
+    let minutos = 0;
+    let segundos = 0;
+    let intervalo = null;
+    let corriendo = false;
+
+    // Función para iniciar el cronómetro
+    function iniciarCronometro() {
+        if (!corriendo) {
+            intervalo = setInterval(actualizarTiempo, 1000);
+            corriendo = true;
+        }
+    }
+
+    // Función para pausar el cronómetro
+    function pausarCronometro() {
+        clearInterval(intervalo);
+        corriendo = false;
+    }
+
+    // Función para reiniciar el cronómetro
+    function reiniciarCronometro() {
+        pausarCronometro();
+        horas = 0;
+        minutos = 0;
+        segundos = 0;
+        document.getElementById('tiempo').innerText = '00:00:00';
+    }
+
+    // Función para actualizar el tiempo cada segundo
+    function actualizarTiempo() {
+        segundos++;
+        if (segundos == 60) {
+            segundos = 0;
+            minutos++;
+        }
+        if (minutos == 60) {
+            minutos = 0;
+            horas++;
+        }
+        // Mostrar el tiempo en formato hh:mm:ss
+        document.getElementById('tiempo').innerText = 
+            (horas < 10 ? '0' + horas : horas) + ':' + 
+            (minutos < 10 ? '0' + minutos : minutos) + ':' + 
+            (segundos < 10 ? '0' + segundos : segundos);
+    }
+</script>
+
+</body>
+</html>

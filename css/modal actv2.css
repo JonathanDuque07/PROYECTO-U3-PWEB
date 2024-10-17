@@ -1,0 +1,93 @@
+/* Modal Styles */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 50%; 
+    top: 5%; 
+    transform: translateX(-50%); 
+    width: 80%; 
+    height: 85%; 
+    background-color: rgba(0, 0, 0, 0.9); /* Fondo más oscuro */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 0;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow-y: hidden;
+}
+
+/* Estilos para la barra de navegación del modal */
+.modal-navbar {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    z-index: 1001; /* Asegurarse de que esté encima del contenido */
+}
+
+/* Estilo de desenfoque (opcional) */
+.blur-background {
+    filter: blur(5px);
+    transition: filter 0.3s ease;
+}
+
+
+.modal-navbar .nav-links {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    list-style-type: none;
+    margin: 0;
+}
+
+.modal-navbar .nav-links li {
+    margin: 0 10px;
+}
+
+.modal-navbar .nav-links li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #575757;
+}
+
+.modal-navbar .nav-links li a:hover {
+    background-color: #444;
+}
+
+/* Asegurar que el contenido se pueda desplazar debajo de la barra de navegación */
+.modal-content iframe {
+    margin-top: 50px; /* Dejar espacio para la barra de navegación */
+    height: calc(100% - 50px); /* Ajustar la altura del iframe para que no se superponga */
+    overflow-y: auto;
+}
+
+/* Estilos para imágenes dentro del modal */
+.modal img {
+    width: 200px; /* Tamaño de imagen igual al de la galería */
+    height: 200px; /* Altura de imagen igual al de la galería */
+    object-fit: cover; /* Mantener proporción y cubrir el contenedor */
+    display: block;
+    margin: 10px auto; /* Centrar la imagen y ajustar el margen */
+}
+
+/* Estilo del título dentro de la imagen */
+.modal .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(190, 6, 6, 0.7); /* Fondo semitransparente */
+    color: white;
+    padding: 5px 10px;
+    font-size: 14px; /* Ajustar el tamaño del texto si es necesario */
+    text-align: center;
+    width: 100%;
+}

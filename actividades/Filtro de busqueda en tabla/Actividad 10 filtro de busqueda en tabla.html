@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtro de Búsqueda en Tabla</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
+            color: #333;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        #searchInput {
+            padding: 12px;
+            width: 80%;
+            max-width: 400px;
+            border: 2px solid #0072ff;
+            border-radius: 25px;
+            font-size: 18px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        #searchInput:focus {
+            border-color: #00c6ff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        th {
+            background-color: #0072ff;
+            color: white;
+            padding: 12px;
+            font-size: 20px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .no-results {
+            font-size: 20px;
+            color: #e74c3c;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Filtro de Búsqueda en Tabla</h2>
+
+<input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Buscar en la tabla...">
+
+<table id="dataTable">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>País</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Juan</td>
+            <td>25</td>
+            <td>España</td>
+        </tr>
+        <tr>
+            <td>Ana</td>
+            <td>30</td>
+            <td>México</td>
+        </tr>
+        <tr>
+            <td>Carlos</td>
+            <td>28</td>
+            <td>Argentina</td>
+        </tr>
+        <tr>
+            <td>María</td>
+            <td>22</td>
+            <td>Chile</td>
+        </tr>
+        <tr>
+            <td>Pablo</td>
+            <td>35</td>
+            <td>Colombia</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="no-results" id="noResults" style="display:none;">No se encontraron resultados.</div>
+
+<script>
+    function filterTable() {
+        const input = document.getElementById("searchInput");
+        const filter = input.value.toLowerCase();
+        const table = document.getElementById("dataTable");
+        const tr = table.getElementsByTagName("tr");
+        let hasResults = false;
+
+        for (let i = 1; i < tr.length; i++) {
+            const td = tr[i].getElementsByTagName("td");
+            let match = false;
+            for (let j = 0; j < td.length; j++) {
+                if (td[j].textContent.toLowerCase().indexOf(filter) > -1) {
+                    match = true;
+                    break;
+                }
+            }
+            tr[i].style.display = match ? "" : "none";
+            if (match) hasResults = true;
+        }
+
+        // Mostrar mensaje si no hay resultados
+        document.getElementById("noResults").style.display = hasResults ? "none" : "block";
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+/* Efecto de destello en las imágenes */
+.project {
+    position: relative;
+    overflow: visible; /* Asegúrate de que la imagen no esté cortada */
+}
+
+.project img {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.project:hover img {
+    transform: scale(1.1); /* Aumenta la imagen un poco */
+    filter: brightness(90%); /* Efecto de oscurecimiento */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5); /* Sombra blanca/destello */
+}

@@ -1,0 +1,92 @@
+/* Estilos generales */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333; /* Color del texto */
+}
+
+/* Contenedor de servicios */
+.content {
+    max-width: 1200px; /* Ancho máximo */
+    margin: 0 auto; /* Centrar el contenido */
+    padding: 20px; /* Relleno interno */
+}
+
+/* Estilo para la sección de servicios */
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Columnas responsivas */
+    gap: 20px; /* Espacio entre elementos */
+    margin-top: 30px; /* Margen superior */
+}
+
+/* Estilo para cada servicio */
+.service-item {
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 20px; /* Relleno interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    text-align: center; /* Centrar texto */
+    transition: transform 0.2s; /* Transición al pasar el cursor */
+}
+
+.service-item:hover {
+    transform: scale(1.05); /* Efecto de escala al pasar el cursor */
+}
+
+/* Títulos de los servicios */
+.service-item h2 {
+    margin: 10px 0; /* Margen arriba y abajo */
+    font-size: 1.5em; /* Tamaño del texto */
+}
+
+/* Estilo para la sección de testimonios */
+.testimonials {
+    margin-top: 40px; /* Margen superior */
+    padding: 20px;
+    background-color: #f9f9f9; /* Fondo gris claro */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+/* Estilo para citas */
+blockquote {
+    margin: 10px 0; /* Margen para las citas */
+    font-style: italic; /* Estilo en cursiva */
+    border-left: 4px solid #007bff; /* Borde izquierdo */
+    padding-left: 10px; /* Relleno interno */
+}
+
+/* Estilo para el llamado a la acción */
+.cta {
+    text-align: center; /* Centrar texto */
+    margin-top: 40px; /* Margen superior */
+    padding: 20px;
+    background-color: #e7f3fe; /* Fondo azul claro */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+/* Botón de llamado a la acción */
+.cta-button {
+    display: inline-block; /* Botón en línea */
+    padding: 10px 20px; /* Relleno */
+    background-color: #007bff; /* Color de fondo azul */
+    color: white; /* Texto blanco */
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado */
+    transition: background-color 0.3s, transform 0.3s; /* Transición */
+}
+
+.cta-button:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el cursor */
+    transform: scale(1.05); /* Efecto de escala al pasar el cursor */
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    .services {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); /* Columnas en pantalla pequeña */
+    }
+}

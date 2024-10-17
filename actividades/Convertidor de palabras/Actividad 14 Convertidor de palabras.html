@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Palabras</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: #34495e;
+        }
+
+        .counter-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        textarea {
+            width: 100%;
+            height: 180px;
+            border: 1px solid #bdc3c7;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 16px;
+            resize: none;
+            outline: none;
+            background-color: #fdfdfd;
+            transition: border-color 0.3s ease;
+        }
+
+        textarea:focus {
+            border-color: #2980b9;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.4);
+        }
+
+        .results {
+            margin-top: 25px;
+            color: #34495e;
+            font-size: 20px;
+        }
+
+        .results span {
+            font-weight: 600;
+            color: #27ae60;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .footer a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="counter-container">
+        <h1>Contador de Palabras</h1>
+        <textarea id="textInput" placeholder="Escribe tu texto aquí..."></textarea>
+        <div class="results">
+            Palabras: <span id="wordCount">0</span> | Caracteres (sin espacios): <span id="charCount">0</span>
+        </div>
+        <div class="footer">
+            <p>Desarrollado por <a href="#">JD</a></p>
+        </div>
+    </div>
+
+    <script>
+        const textInput = document.getElementById('textInput');
+        const wordCount = document.getElementById('wordCount');
+        const charCount = document.getElementById('charCount');
+
+        textInput.addEventListener('input', function () {
+            const text = textInput.value.trim();
+            const words = text.split(/\s+/).filter(word => word.length > 0);
+            const characters = text.replace(/\s/g, '');
+
+            wordCount.textContent = words.length;
+            charCount.textContent = characters.length;
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+/* Estilos generales */
+body {
+    font-family: 'Poppins', sans-serif; /* Fuente global */
+    color: #333;
+    line-height: 1.6; /* Aumentar la altura de línea para mejorar la legibilidad */
+}
+
+.content {
+    padding: 30px; /* Aumentar el padding interno para más espacio */
+    max-width: 800px;
+    margin: 80px auto; /* Aumentar el margen superior para evitar superposición */
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Estilo del formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px; /* Aumentar el margen superior del formulario */
+}
+
+.form-group {
+    margin-bottom: 25px; /* Aumentar el espaciado entre grupos de formulario */
+}
+
+label {
+    margin-bottom: 8px; /* Aumentar el margen inferior de las etiquetas */
+    font-weight: 600; /* Negrita para las etiquetas */
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    padding: 12px; /* Aumentar el padding interno de los inputs */
+    border: 1px solid #ccc; /* Bordes gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif; /* Aplicar fuente Poppins a los inputs y textarea */
+    width: 100%; /* Ancho completo */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #007bff; /* Color del borde al enfocar */
+    outline: none; /* Quitar el contorno por defecto */
+}
+
+button {
+    padding: 12px; /* Aumentar el padding interno del botón */
+    background-color: #007bff; /* Color de fondo azul */
+    color: white; /* Texto blanco */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de mano */
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif; /* Aplicar fuente Poppins al botón */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+button:hover {
+    background-color: #0056b3; /* Color más oscuro al pasar el cursor */
+}
+
+/* Estilo de la información de contacto */
+.contact-info {
+    margin-top: 40px; /* Aumentar el margen superior para separar de otros elementos */
+    padding: 20px; /* Aumentar el padding interno */
+    background-color: #f9f9f9; /* Fondo gris claro */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.contact-info h2 {
+    margin-bottom: 20px; /* Aumentar el margen inferior del título */
+    font-weight: 600; /* Negrita para el título */
+}
+
+.contact-info p {
+    margin: 10px 0; /* Aumentar el espaciado para los párrafos */
+}

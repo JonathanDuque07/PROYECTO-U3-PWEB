@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #4e54c8, #8f94fb); /* Fondo degradado atractivo */
+            color: #333;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #ff7f50; /* Color vibrante para el título */
+        }
+
+        #newTask {
+            padding: 12px;
+            width: 300px;
+            font-size: 1.2em;
+            border: 2px solid #4CAF50;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-left: 10px;
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave */
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px); /* Efecto de desplazamiento al hacer hover */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            width: 100%; /* Ocupa el 100% del ancho disponible */
+            max-width: 400px; /* Ancho máximo para la lista */
+            margin: 20px auto; /* Centrado automático */
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            font-size: 1.2em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+            transition: background-color 0.3s ease; /* Transición suave */
+        }
+
+        li:hover {
+            background-color: #f1f1f1; /* Cambia de fondo al pasar el cursor */
+        }
+
+        li.completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+
+        .delete-btn, .complete-btn {
+            background-color: #e74c3c;
+            border: none;
+            padding: 8px 12px;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s ease; /* Transición suave */
+        }
+
+        .complete-btn {
+            background-color: #3498db;
+        }
+
+        .complete-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .delete-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .error {
+            color: #ff4d4d;
+            font-size: 14px;
+            margin-top: 10px; /* Espaciado entre el error y otros elementos */
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Tareas</h1>
+
+    <!-- Input para agregar nueva tarea -->
+    <input type="text" id="newTask" placeholder="Agregar una nueva tarea">
+    <button id="addTaskBtn">Agregar Tarea</button>
+    <p id="errorMessage" class="error"></p>
+
+    <!-- Lista de tareas -->
+    <ul id="taskList"></ul>
+
+    <script>
+        // Array para almacenar las tareas
+        let tasks = [];
+
+        // Elementos del DOM
+        const newTaskInput = document.getElementById('newTask');
+        const addTaskBtn = document.getElementById('addTaskBtn');
+        const taskList = document.getElementById('taskList');
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Función para renderizar las tareas en el DOM
+        function renderTasks() {
+            taskList.innerHTML = ''; // Limpia la lista antes de renderizarla
+            tasks.forEach((task, index) => {
+                const li = document.createElement('li');
+                li.textContent = task.name;
+                li.classList.toggle('completed', task.completed);
+
+                // Botón para marcar la tarea como completada
+                const completeBtn = document.createElement('button');
+                completeBtn.textContent = task.completed ? 'Desmarcar' : 'Completar';
+                completeBtn.classList.add('complete-btn');
+                completeBtn.addEventListener('click', () => {
+                    toggleCompleteTask(index);
+                });
+
+                // Botón para eliminar la tarea
+                const deleteBtn = document.createElement('button');
+                deleteBtn.textContent = 'Eliminar';
+                deleteBtn.classList.add('delete-btn');
+                deleteBtn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Evita que se marque como completada al eliminarla
+                    deleteTask(index);
+                });
+
+                li.appendChild(completeBtn);
+                li.appendChild(deleteBtn);
+                taskList.appendChild(li);
+            });
+        }
+
+        // Función para agregar una nueva tarea con validación
+        function addTask() {
+            const taskName = newTaskInput.value.trim(); // Obtiene el valor del input
+            if (taskName) {
+                tasks.push({ name: taskName, completed: false }); // Añade la tarea al array
+                newTaskInput.value = ''; // Limpia el campo de texto
+                errorMessage.textContent = ''; // Limpia el mensaje de error
+                renderTasks(); // Renderiza las tareas
+            } else {
+                errorMessage.textContent = 'El campo no puede estar vacío. Por favor, ingresa una tarea.';
+            }
+        }
+
+        // Función para eliminar una tarea
+        function deleteTask(index) {
+            tasks.splice(index, 1); // Elimina la tarea del array
+            renderTasks(); // Renderiza las tareas actualizadas
+        }
+
+        // Función para marcar una tarea como completada o no completada
+        function toggleCompleteTask(index) {
+            tasks[index].completed = !tasks[index].completed; // Alterna el estado de completado
+            renderTasks(); // Renderiza las tareas actualizadas
+        }
+
+        // Evento para agregar una tarea al hacer clic en el botón
+        addTaskBtn.addEventListener('click', addTask);
+
+        // Permite agregar la tarea presionando "Enter"
+        newTaskInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                addTask();
+            }
+        });
+
+    </script>
+</body>
+</html>

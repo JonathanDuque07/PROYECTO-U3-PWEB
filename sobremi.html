@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre mí - Mi Portafolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/sobremi.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Contenedor para las partículas -->
+    <div id="particles-js" class="background"></div>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="logo">Mi Portafolio</div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            &#9776;
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="servicios.html"><i class="fas fa-cogs"></i> Servicios</a></li>
+            <li><a href="sobremi.html"><i class="fas fa-user"></i> Sobre mí</a></li>
+            <li><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido de la página de Sobre mí -->
+    <section class="content about">
+        <h1>Sobre mí</h1>
+        <p><i class="fas fa-user"></i> Hola, soy Jonathan Francisco Gallegos Duque, un estudiante de Ingeniería en Sistemas Computacionales de 7mo semestre en el Instituto Tecnológico de Matehuala.</p>
+        
+        <h2><i class="fas fa-bullseye"></i> Objetivo de este Proyecto</h2>
+        <p>Este portafolio es un proyecto de la materia de Programación Web, donde aplico mis conocimientos en desarrollo front-end y diseño de interfaces para crear una experiencia atractiva y funcional.</p>
+        
+        <h2><i class="fas fa-briefcase"></i> Experiencia Profesional</h2>
+        <p>He participado en varios proyectos académicos y personales, desarrollando sitios web y aplicaciones que priorizan tanto la funcionalidad como la estética. Mi enfoque siempre ha sido entender las necesidades del usuario y convertirlas en soluciones efectivas.</p>
+        
+        <h2><i class="fas fa-tools"></i> Habilidades</h2>
+        <ul>
+            <li><i class="fas fa-check"></i> Desarrollo Front-end (HTML, CSS, JavaScript)</li>
+            <li><i class="fas fa-check"></i> Diseño UX/UI</li>
+            <li><i class="fas fa-check"></i> Optimización de sitios web para rendimiento y accesibilidad</li>
+            <li><i class="fas fa-check"></i> Uso de herramientas de diseño como Figma y Adobe XD</li>
+        </ul>
+        
+        <h2><i class="fas fa-address-card"></i> Contacto</h2>
+        <p>Si deseas saber más sobre mí o discutir posibles colaboraciones, no dudes en <a href="contacto.html">contactarme</a>.</p>
+    </section>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="js/main.js"></script>
+
+    <!-- Script para cargar las partículas -->
+    <script>
+        particlesJS.load('particles-js', 'particles.json', function() {
+            console.log('callback - particles.js config loaded');
+        });
+    </script>
+
+    <footer style="background-color: rgba(20, 20, 20, 0.9); padding: 20px; text-align: center; color: white;">
+        <p>&copy; 2024 Jonathan Duque. Todos los derechos reservados.</p>
+        <p>Síguenos en nuestras redes sociales:</p>
+        <a href="https://www.facebook.com" style="color: #ffcc00; margin: 0 10px;">Facebook</a>
+        <a href="https://x.com/?lang=en" style="color: #ffcc00; margin: 0 10px;">X</a>
+        <a href="https://www.instagram.com" style="color: #ffcc00; margin: 0 10px;">Instagram</a>
+    </footer>
+</body>
+</html>

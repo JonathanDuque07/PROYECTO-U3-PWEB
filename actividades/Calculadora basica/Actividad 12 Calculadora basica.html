@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Moderna</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333; /* Texto oscuro para mejor contraste */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Evitar barras de desplazamiento */
+            background: #1c1c1c; /* Fondo oscuro para mayor contraste */
+            position: relative;
+        }
+
+        .fondo-animado {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #ff007f, #007fff, #ff007f);
+            animation: movimiento 10s infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes movimiento {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        .calculadora {
+            background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
+            padding: 15px; /* Espaciado interno reducido */
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            width: 280px; /* Ancho reducido */
+            text-align: center;
+            border: 2px solid #ff007f; /* Bordes en color vibrante */
+            position: relative;
+            z-index: 1; /* Asegura que la calculadora esté por encima del fondo animado */
+        }
+
+        .pantalla {
+            width: 100%;
+            padding: 10px; /* Espaciado interno reducido */
+            border: 2px solid #ff007f; /* Bordes en color vibrante */
+            border-radius: 5px;
+            margin-bottom: 15px; /* Espacio entre pantalla y botones */
+            background-color: #e0f7fa; /* Fondo claro en la pantalla */
+            font-size: 1.8rem; /* Tamaño de fuente reducido */
+            color: #007acc; /* Texto azul en la pantalla */
+            text-align: right;
+        }
+
+        .botones {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px; /* Espacio entre botones reducido */
+        }
+
+        .boton {
+            padding: 15px; /* Espaciado interno reducido */
+            background-color: #ff007f; /* Color rosa vibrante */
+            border: 1px solid #cc0057; /* Bordes más oscuros */
+            color: #fff;
+            font-size: 1.3rem; /* Tamaño de fuente reducido */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .boton:hover {
+            background-color: #cc0057; /* Rosa oscuro al pasar el ratón */
+            transform: scale(1.05);
+        }
+
+        .boton.operacion {
+            background-color: #ffcc00; /* Amarillo vibrante para operaciones */
+        }
+
+        .boton.igual {
+            grid-column: span 4;
+            background-color: #ff9900; /* Naranja vibrante para el botón igual */
+        }
+
+        .boton.borrar {
+            background-color: #ff3333; /* Rojo vibrante para borrar */
+        }
+
+        .boton.ac {
+            background-color: #ff0000; /* Rojo fuerte para AC */
+        }
+
+        .boton:active {
+            background-color: #cc0057; /* Color activo */
+        }
+
+        .boton.operacion:hover {
+            background-color: #e6b800; /* Amarillo oscuro */
+        }
+
+        .boton.igual:hover {
+            background-color: #ff7f00; /* Naranja más claro */
+        }
+
+        .boton.borrar:hover {
+            background-color: #ff4d4d; /* Rojo más claro */
+        }
+
+        .boton.ac:hover {
+            background-color: #e60000; /* Rojo más oscuro */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="fondo-animado"></div> <!-- Fondo animado -->
+
+    <div class="calculadora">
+        <input type="text" id="pantalla" class="pantalla" readonly>
+
+        <div class="botones">
+            <button class="boton" onclick="agregarNumero('7')">7</button>
+            <button class="boton" onclick="agregarNumero('8')">8</button>
+            <button class="boton" onclick="agregarNumero('9')">9</button>
+            <button class="boton operacion" onclick="agregarOperacion('/')">/</button>
+
+            <button class="boton" onclick="agregarNumero('4')">4</button>
+            <button class="boton" onclick="agregarNumero('5')">5</button>
+            <button class="boton" onclick="agregarNumero('6')">6</button>
+            <button class="boton operacion" onclick="agregarOperacion('*')">*</button>
+
+            <button class="boton" onclick="agregarNumero('1')">1</button>
+            <button class="boton" onclick="agregarNumero('2')">2</button>
+            <button class="boton" onclick="agregarNumero('3')">3</button>
+            <button class="boton operacion" onclick="agregarOperacion('-')">-</button>
+
+            <button class="boton" onclick="agregarNumero('0')">0</button>
+            <button class="boton" onclick="limpiarPantalla()">C</button>
+            <button class="boton ac" onclick="borrarTodo()">AC</button>
+            <button class="boton operacion" onclick="agregarOperacion('+')">+</button>
+
+            <button class="boton igual" onclick="calcular()">=</button>
+        </div>
+    </div>
+
+    <script>
+        let operacionActual = '';
+
+        function agregarNumero(numero) {
+            operacionActual += numero;
+            document.getElementById('pantalla').value = operacionActual;
+        }
+
+        function agregarOperacion(operador) {
+            operacionActual += operador;
+            document.getElementById('pantalla').value = operacionActual;
+        }
+
+        function limpiarPantalla() {
+            operacionActual = operacionActual.slice(0, -1);
+            document.getElementById('pantalla').value = operacionActual;
+        }
+
+        function borrarTodo() {
+            operacionActual = '';
+            document.getElementById('pantalla').value = '';
+        }
+
+        function calcular() {
+            try {
+                operacionActual = eval(operacionActual);
+                document.getElementById('pantalla').value = operacionActual % 1 === 0 ? operacionActual : operacionActual.toFixed(4); // Redondear a 4 decimales
+            } catch (error) {
+                document.getElementById('pantalla').value = 'Error';
+            }
+        }
+    </script>
+
+</body>
+</html>

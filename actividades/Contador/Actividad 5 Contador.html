@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
+            color: #333;
+        }
+        .contador-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .contador-container:hover {
+            transform: scale(1.05);
+        }
+        #contador {
+            font-size: 60px;
+            margin: 20px 0;
+            color: #6200ea;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #6200ea;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            margin: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        button:hover {
+            background-color: #3700b3;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="contador-container">
+        <h2>Contador</h2>
+        <p id="contador">0</p>
+        <button id="subirparriba">Subir</button>
+        <button id="bajarpabajo">Bajar</button>
+    </div>
+
+    <script>
+        // Inicializamos el valor del contador
+        let contador = 0;
+
+        // Variables para los botones de aumentar y disminuir
+        const subirparriba = document.getElementById("subirparriba");
+        const bajarpabajo = document.getElementById("bajarpabajo");
+
+        // Referencia al elemento donde mostramos el valor del contador
+        const contadorDisplay = document.getElementById("contador");
+
+        // Función para aumentar el contador
+        subirparriba.addEventListener("click", function() {
+            contador++;
+            contadorDisplay.innerText = contador;
+        });
+
+        // Función para disminuir el contador
+        bajarpabajo.addEventListener("click", function() {
+            contador--;
+            contadorDisplay.innerText = contador;
+        });
+    </script>
+
+</body>
+</html>

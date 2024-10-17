@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertidor de Unidades</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .converter-container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 26px;
+            color: #2c3e50;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-size: 15px;
+            margin-bottom: 5px;
+            color: #34495e;
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #bdc3c7;
+            background-color: #ecf0f1;
+            color: #34495e;
+            box-sizing: border-box;
+        }
+
+        .result {
+            text-align: center;
+            font-size: 22px;
+            background-color: #1abc9c;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .conversion-detail {
+            font-size: 16px;
+            margin-top: 10px;
+            text-align: center;
+            color: #7f8c8d;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            font-size: 18px;
+            border-radius: 8px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="converter-container">
+        <h1>Convertidor de Unidades</h1>
+        
+        <div class="form-group">
+            <label for="inputValue">Valor:</label>
+            <input type="number" id="inputValue" placeholder="Ingresa un valor" oninput="convert()">
+        </div>
+
+        <div class="form-group">
+            <label for="inputUnit">Unidad de entrada:</label>
+            <select id="inputUnit" onchange="convert()">
+                <option value="meters">Metros</option>
+                <option value="kilometers">Kilómetros</option>
+                <option value="miles">Millas</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="outputUnit">Unidad de salida:</label>
+            <select id="outputUnit" onchange="convert()">
+                <option value="meters">Metros</option>
+                <option value="kilometers">Kilómetros</option>
+                <option value="miles">Millas</option>
+            </select>
+        </div>
+
+        <div class="result" id="result">Resultado: 0</div>
+        <div class="conversion-detail" id="conversionDetail"></div>
+    </div>
+
+    <script>
+        function convert() {
+            const inputValue = parseFloat(document.getElementById('inputValue').value);
+            const inputUnit = document.getElementById('inputUnit').value;
+            const outputUnit = document.getElementById('outputUnit').value;
+            const conversionDetail = document.getElementById('conversionDetail');
+
+            if (isNaN(inputValue)) {
+                document.getElementById('result').textContent = 'Resultado: 0';
+                conversionDetail.textContent = '';
+                return;
+            }
+
+            let meters;
+
+            // Convertir la entrada a metros
+            if (inputUnit === 'meters') {
+                meters = inputValue;
+            } else if (inputUnit === 'kilometers') {
+                meters = inputValue * 1000;
+            } else if (inputUnit === 'miles') {
+                meters = inputValue * 1609.34;
+            }
+
+            let result;
+
+            // Convertir de metros a la unidad de salida
+            if (outputUnit === 'meters') {
+                result = meters;
+            } else if (outputUnit === 'kilometers') {
+                result = meters / 1000;
+            } else if (outputUnit === 'miles') {
+                result = meters / 1609.34;
+            }
+
+            document.getElementById('result').textContent = `Resultado: ${result.toFixed(4)}`;
+
+            // Mostrar detalle del proceso de conversión
+            const inputUnitText = inputUnit === 'meters' ? 'Metros' : inputUnit === 'kilometers' ? 'Kilómetros' : 'Millas';
+            const outputUnitText = outputUnit === 'meters' ? 'Metros' : outputUnit === 'kilometers' ? 'Kilómetros' : 'Millas';
+            conversionDetail.textContent = `Convertiste de ${inputUnitText} a ${outputUnitText}`;
+        }
+    </script>
+
+</body>
+</html>

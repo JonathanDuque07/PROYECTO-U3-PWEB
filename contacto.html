@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Mi Portafolio</title>
+    <link rel="stylesheet" href="css/styles.css"> <!-- Referencia al CSS -->
+    <link rel="stylesheet" href="css/formulario_contacto.css"> <!-- Referencia al CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Enlace al script de partículas -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+
+    <!-- Contenedor para las partículas -->
+    <div id="particles-js" class="background"></div>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="logo">Mi Portafolio</div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            &#9776;
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="servicios.html"><i class="fas fa-cogs"></i> Servicios</a></li>
+            <li><a href="sobremi.html"><i class="fas fa-user"></i> Sobre mí</a></li>
+            <li><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido de la página de Contacto -->
+    <section class="content">
+        <h1>Contacto</h1>
+        <p>Si tienes alguna pregunta, comentario o deseas más información, por favor completa el siguiente formulario y me pondré en contacto contigo lo antes posible.</p>
+
+        <!-- Formulario de contacto -->
+        <form action="enviar_formulario.php" method="post">
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+
+        <!-- Información de contacto adicional -->
+        <div class="contact-info">
+            <h2>Información de Contacto</h2>
+            <p><i class="fas fa-phone"></i> Teléfono: +123 456 7890</p>
+            <p><i class="fas fa-map-marker-alt"></i> Dirección: Calle Ejemplo 123, Ciudad, País</p>
+            <p><i class="fas fa-clock"></i> Horario: Lunes - Viernes, 9:00 - 18:00</p>
+        </div>
+    </section>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="js/main.js"></script>
+
+    <!-- Script para cargar las partículas -->
+    <script>
+        particlesJS.load('particles-js', 'particles.json', function() {
+            console.log('callback - particles.js config loaded');
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer style="background-color: rgba(20, 20, 20, 0.9); padding: 20px; text-align: center; color: white;">
+        <p>&copy; 2024 Jonathan Duque. Todos los derechos reservados.</p>
+        <p>Síguenos en nuestras redes sociales:</p>
+        <a href="https://www.facebook.com" style="color: #ffcc00; margin: 0 10px;">Facebook</a>
+        <a href="https://x.com/?lang=en" style="color: #ffcc00; margin: 0 10px;">X</a>
+        <a href="https://www.instagram.com" style="color: #ffcc00; margin: 0 10px;">Instagram</a>
+    </footer>
+</body>
+</html>

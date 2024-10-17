@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suma de dos Números</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 350px;
+            transition: transform 0.3s ease;
+        }
+
+        .form-container:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: #333;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: #3498db;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        input[type="number"]:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+            outline: none;
+        }
+
+        button {
+            padding: 12px;
+            font-size: 16px;
+            width: 100%;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #2ecc71;
+            transform: translateY(-2px);
+        }
+
+        p {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        span#caquita {
+            font-weight: 600;
+            color: #e74c3c;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Suma de dos Números</h2>
+        <form id="sumaForm">
+            <input type="number" id="churpia1" name="churpia1" placeholder="Ingresa el primer número" required>
+            <input type="number" id="churpia2" name="churpia2" placeholder="Ingresa el segundo número" required>
+            <button type="button" onclick="calcularSuma()">Sumar</button>
+        </form>
+        <p>El resultado es: <span id="caquita">0</span></p>
+    </div>
+
+    <script>
+        // Función para calcular la suma de los dos números ingresados
+        function calcularSuma() {
+            // Obtener los valores ingresados en los campos churpia1 y churpia2
+            let num1 = parseFloat(document.getElementById("churpia1").value);
+            let num2 = parseFloat(document.getElementById("churpia2").value);
+
+            // Validar que ambos números sean válidos
+            if (isNaN(num1) || isNaN(num2)) {
+                alert("Por favor, ingresa números válidos.");
+                return;
+            }
+
+            // Realizar la suma
+            let suma = num1 + num2;
+
+            // Mostrar el resultado en el span con id "caquita"
+            document.getElementById("caquita").innerText = suma;
+        }
+    </script>
+
+</body>
+</html>

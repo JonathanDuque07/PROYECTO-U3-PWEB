@@ -1,0 +1,106 @@
+/* Fondo general */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    background-color: #2c3e50;
+    margin: 0;
+    padding: 0;
+    color: white;
+    /* No ocultamos el scroll */
+    overflow-x: hidden; /* Solo ocultamos el scroll horizontal si es necesario */
+}
+
+/* Fondo animado de partículas */
+@keyframes move {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 200%; /* Aumentamos para que el fondo cubra la página al desplazarse */
+    z-index: -1;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 2px, transparent 3px), 
+                radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 2px);
+    background-size: 100px 100px, 50px 50px;
+    animation: move 30s linear infinite;
+}
+
+/* Título principal */
+h1 {
+    margin-top: 20px;
+    font-size: 3rem;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Botón de nuevas imágenes */
+button {
+    margin: 20px;
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #007bff, #6610f2);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #6610f2, #007bff);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+    transform: scale(1.05);
+}
+
+/* Contenedor de la galería */
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Estilo para las imágenes */
+.gallery-container img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-container img:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Ajustes responsivos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .gallery-container img {
+        width: 90%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,17 @@
+.card {
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra más fuerte */
+    overflow: hidden; /* Oculta el desbordamiento */
+    transition: transform 0.2s, box-shadow 0.2s; /* Transiciones suaves */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efecto de elevación */
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+}
+
+.card img {
+    width: 100%; /* Asegura que la imagen ocupe todo el contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+}

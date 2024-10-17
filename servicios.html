@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios - Mi Portafolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/servicios.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Enlace al script de partículas -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+
+    <!-- Contenedor para las partículas -->
+    <div id="particles-js" class="background"></div>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="logo">Mi Portafolio</div>
+        <div class="menu-icon" onclick="toggleMenu()">
+            &#9776;
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+            <li><a href="servicios.html"><i class="fas fa-cogs"></i> Servicios</a></li>
+            <li><a href="sobremi.html"><i class="fas fa-user"></i> Sobre mí</a></li>
+            <li><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido de la página de Servicios -->
+    <section class="content">
+        <h1>Servicios</h1>
+        <p>Ofrecemos una amplia gama de servicios para satisfacer tus necesidades. A continuación, detallamos lo que podemos hacer por ti:</p>
+        
+        <!-- Lista de servicios -->
+        <div class="services">
+            <div class="service-item">
+                <i class="fas fa-code"></i>
+                <h2>Desarrollo Web</h2>
+                <p>Creación de sitios web modernos y responsivos que se adaptan a cualquier dispositivo.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-paint-brush"></i>
+                <h2>Diseño Gráfico</h2>
+                <p>Diseños personalizados que reflejan la identidad de tu marca.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-search"></i>
+                <h2>SEO</h2>
+                <p>Optimización para motores de búsqueda para aumentar la visibilidad de tu sitio web.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-mobile-alt"></i>
+                <h2>Aplicaciones Móviles</h2>
+                <p>Desarrollo de aplicaciones móviles funcionales y atractivas para iOS y Android.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-comments"></i>
+                <h2>Consultoría</h2>
+                <p>Asesoramiento experto en tecnología y estrategia digital.</p>
+            </div>
+            <div class="service-item">
+                <i class="fas fa-code"></i>
+                <h2>Desarrollo de Software</h2>
+                <p>Creación de aplicaciones de software a medida para optimizar tus procesos.</p>
+            </div>
+        </div>
+
+        <!-- Testimonios -->
+        <div class="testimonials">
+            <h2>Lo que dicen nuestros clientes</h2>
+            <blockquote>
+                <p>"El servicio fue excepcional. Mi sitio web superó todas mis expectativas." - Cliente Satisfecho</p>
+            </blockquote>
+            <blockquote>
+                <p>"Excelente atención y resultados. ¡Totalmente recomendado!" - Cliente Feliz</p>
+            </blockquote>
+        </div>
+
+        <!-- Llamado a la acción -->
+        <div class="cta">
+            <h2>¿Listo para comenzar?</h2>
+            <p>Póngase en contacto con nosotros hoy mismo y descubramos juntos cómo podemos ayudarte.</p>
+            <a href="contacto.html" class="cta-button">Contáctanos</a>
+        </div>
+    </section>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="js/main.js"></script>
+
+    <!-- Script para cargar las partículas -->
+    <script>
+        particlesJS.load('particles-js', 'particles.json', function() {
+            console.log('callback - particles.js config loaded');
+        });
+    </script>
+
+    <footer style="background-color: rgba(20, 20, 20, 0.9); padding: 20px; text-align: center; color: white;">
+        <p>&copy; 2024 Jonathan Duque. Todos los derechos reservados.</p>
+        <p>Síguenos en nuestras redes sociales:</p>
+        <a href="https://www.facebook.com" style="color: #ffcc00; margin: 0 10px;">Facebook</a>
+        <a href="https://x.com/?lang=en" style="color: #ffcc00; margin: 0 10px;">X</a>
+        <a href="https://www.instagram.com" style="color: #ffcc00; margin: 0 10px;">Instagram</a>
+    </footer>
+</body>
+</html>
